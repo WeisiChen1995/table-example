@@ -4787,6 +4787,7 @@ vertical-align: -.125em;
   <li><a href="#read-in-the-demo-data" id="toc-read-in-the-demo-data" class="nav-link" data-scroll-target="#read-in-the-demo-data"><strong>Read in the demo data</strong></a></li>
   <li><a href="#example-basic-table" id="toc-example-basic-table" class="nav-link" data-scroll-target="#example-basic-table"><strong>Example basic table</strong></a></li>
   <li><a href="#customize-the-tables-appearance" id="toc-customize-the-tables-appearance" class="nav-link" data-scroll-target="#customize-the-tables-appearance"><strong>Customize the table’s appearance</strong></a></li>
+  <li><a href="#customize-the-tables-appearance-ii" id="toc-customize-the-tables-appearance-ii" class="nav-link" data-scroll-target="#customize-the-tables-appearance-ii"><strong>Customize the table’s appearance II</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
@@ -4830,7 +4831,8 @@ vertical-align: -.125em;
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="read-in-the-demo-data" class="level3">
@@ -4868,23 +4870,23 @@ vertical-align: -.125em;
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">&quot;**Characteristic**&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># Update column header</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_gt</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">tab_header</span>(</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset.&quot;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset&quot;</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ltuqjwbmok" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ltuqjwbmok table {
+<div id="qruzpjjnci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qruzpjjnci table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#ltuqjwbmok thead, #ltuqjwbmok tbody, #ltuqjwbmok tfoot, #ltuqjwbmok tr, #ltuqjwbmok td, #ltuqjwbmok th {
+#qruzpjjnci thead, #qruzpjjnci tbody, #qruzpjjnci tfoot, #qruzpjjnci tr, #qruzpjjnci td, #qruzpjjnci th {
 border-style: none;
 }
-#ltuqjwbmok p {
+#qruzpjjnci p {
 margin: 0;
 padding: 0;
 }
-#ltuqjwbmok .gt_table {
+#qruzpjjnci .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4909,11 +4911,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_caption {
+#qruzpjjnci .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#ltuqjwbmok .gt_title {
+#qruzpjjnci .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4924,7 +4926,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#ltuqjwbmok .gt_subtitle {
+#qruzpjjnci .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4935,7 +4937,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#ltuqjwbmok .gt_heading {
+#qruzpjjnci .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4946,12 +4948,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_bottom_border {
+#qruzpjjnci .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_col_headings {
+#qruzpjjnci .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4965,7 +4967,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_col_heading {
+#qruzpjjnci .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4984,7 +4986,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#ltuqjwbmok .gt_column_spanner_outer {
+#qruzpjjnci .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4995,13 +4997,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#ltuqjwbmok .gt_column_spanner_outer:first-child {
+#qruzpjjnci .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#ltuqjwbmok .gt_column_spanner_outer:last-child {
+#qruzpjjnci .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#ltuqjwbmok .gt_column_spanner {
+#qruzpjjnci .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -5012,10 +5014,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#ltuqjwbmok .gt_spanner_row {
+#qruzpjjnci .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#ltuqjwbmok .gt_group_heading {
+#qruzpjjnci .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5040,7 +5042,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#ltuqjwbmok .gt_empty_group_heading {
+#qruzpjjnci .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -5054,13 +5056,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#ltuqjwbmok .gt_from_md > :first-child {
+#qruzpjjnci .gt_from_md > :first-child {
 margin-top: 0;
 }
-#ltuqjwbmok .gt_from_md > :last-child {
+#qruzpjjnci .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#ltuqjwbmok .gt_row {
+#qruzpjjnci .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5078,7 +5080,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#ltuqjwbmok .gt_stub {
+#qruzpjjnci .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5090,7 +5092,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ltuqjwbmok .gt_stub_row_group {
+#qruzpjjnci .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5103,13 +5105,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#ltuqjwbmok .gt_row_group_first td {
+#qruzpjjnci .gt_row_group_first td {
 border-top-width: 2px;
 }
-#ltuqjwbmok .gt_row_group_first th {
+#qruzpjjnci .gt_row_group_first th {
 border-top-width: 2px;
 }
-#ltuqjwbmok .gt_summary_row {
+#qruzpjjnci .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5118,14 +5120,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ltuqjwbmok .gt_first_summary_row {
+#qruzpjjnci .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_first_summary_row.thick {
+#qruzpjjnci .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#ltuqjwbmok .gt_last_summary_row {
+#qruzpjjnci .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5134,7 +5136,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_grand_summary_row {
+#qruzpjjnci .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5143,7 +5145,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ltuqjwbmok .gt_first_grand_summary_row {
+#qruzpjjnci .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5152,7 +5154,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_last_grand_summary_row_top {
+#qruzpjjnci .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5161,10 +5163,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_striped {
+#qruzpjjnci .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#ltuqjwbmok .gt_table_body {
+#qruzpjjnci .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5172,7 +5174,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_footnotes {
+#qruzpjjnci .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5185,7 +5187,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_footnote {
+#qruzpjjnci .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -5193,7 +5195,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ltuqjwbmok .gt_sourcenotes {
+#qruzpjjnci .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5206,64 +5208,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ltuqjwbmok .gt_sourcenote {
+#qruzpjjnci .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ltuqjwbmok .gt_left {
+#qruzpjjnci .gt_left {
 text-align: left;
 }
-#ltuqjwbmok .gt_center {
+#qruzpjjnci .gt_center {
 text-align: center;
 }
-#ltuqjwbmok .gt_right {
+#qruzpjjnci .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#ltuqjwbmok .gt_font_normal {
+#qruzpjjnci .gt_font_normal {
 font-weight: normal;
 }
-#ltuqjwbmok .gt_font_bold {
+#qruzpjjnci .gt_font_bold {
 font-weight: bold;
 }
-#ltuqjwbmok .gt_font_italic {
+#qruzpjjnci .gt_font_italic {
 font-style: italic;
 }
-#ltuqjwbmok .gt_super {
+#qruzpjjnci .gt_super {
 font-size: 65%;
 }
-#ltuqjwbmok .gt_footnote_marks {
+#qruzpjjnci .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#ltuqjwbmok .gt_asterisk {
+#qruzpjjnci .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#ltuqjwbmok .gt_indent_1 {
+#qruzpjjnci .gt_indent_1 {
 text-indent: 5px;
 }
-#ltuqjwbmok .gt_indent_2 {
+#qruzpjjnci .gt_indent_2 {
 text-indent: 10px;
 }
-#ltuqjwbmok .gt_indent_3 {
+#qruzpjjnci .gt_indent_3 {
 text-indent: 15px;
 }
-#ltuqjwbmok .gt_indent_4 {
+#qruzpjjnci .gt_indent_4 {
 text-indent: 20px;
 }
-#ltuqjwbmok .gt_indent_5 {
+#qruzpjjnci .gt_indent_5 {
 text-indent: 25px;
 }
-#ltuqjwbmok .katex-display {
+#qruzpjjnci .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#ltuqjwbmok div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qruzpjjnci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -5278,7 +5280,7 @@ height: 0px !important;
 </colgroup>
 <thead>
 <tr class="header gt_heading">
-<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset.</th>
+<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset</th>
 </tr>
 <tr class="odd gt_col_headings">
 <th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
@@ -5811,95 +5813,131 @@ height: 0px !important;
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove missing data in the Diabetes variable for simplicity</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Diabetes)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format the Diabates variable</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Diabetes =</span> <span class="fu">case_when</span>(Diabetes <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;With Diabetes&quot;</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                Diabetes <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;Without Diabtes&quot;</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">Diabetes =</span> <span class="fu">factor</span>(Diabetes, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;With Diabetes&quot;</span>, <span class="st">&quot;Without Diabtes&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add total number </span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select relevant variables</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(total, Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus, HHIncome, Work, Diabetes) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a summary table by Diabetes group</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tbl_summary</span>(</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> Diabetes, </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">&quot;continuous2&quot;</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Include additional summary statistics for continuous variables</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">&quot;{mean}, ({sd})&quot;</span>,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">&quot;{median}, ({p25}, {p75})&quot;</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">&quot;{min}, {max}&quot;</span>), </span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">&quot;{n} ({p}%)&quot;</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">list</span>(</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">total =</span> <span class="st">&quot;Total (column denominator)&quot;</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">AgeDecade =</span> <span class="st">&quot;Age group&quot;</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">Race1 =</span> <span class="st">&quot;Ethnicity&quot;</span>,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">BMI_WHO =</span> <span class="st">&quot;BMI group&quot;</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">HHIncome =</span> <span class="st">&quot;Household income&quot;</span>,</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>          <span class="at">Work =</span> <span class="st">&quot;Employment status&quot;</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">missing =</span> <span class="st">&quot;no&quot;</span>,</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove decimal placeds for all number and percentage</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">digits =</span> <span class="fu">list</span>(<span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add total column</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_overall</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move the total column to the far end of the table </span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_table_body</span>(<span class="sc">~</span>.x <span class="sc">%&gt;%</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                        dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_0, <span class="at">.after=</span>stat_2) <span class="sc">%&gt;%</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># change label name </span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                        dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label<span class="sc">==</span><span class="st">&quot;Median, (Q1, Q3)&quot;</span>, <span class="st">&quot;Median, (IQR)&quot;</span>, label)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                        dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label<span class="sc">==</span><span class="st">&quot;Min, Max&quot;</span>, <span class="st">&quot;Range&quot;</span>,label))</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># modify the header</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_header</span>(</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">update =</span> <span class="fu">list</span>(<span class="fu">all_stat_cols</span>(<span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                   <span class="at">label =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stat_0 =</span> <span class="st">&quot;**Total**&quot;</span>,</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stat_1 =</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stat_2 =</span> <span class="st">&quot;**{level}**&quot;</span>)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">%&gt;%</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test for differences between groups</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_p</span>() <span class="sc">%&gt;%</span>  </span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bold_labels</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Modify footnotes</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_footnote</span>(</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="fu">all_stat_cols</span>()) <span class="sc">~</span> <span class="cn">NA</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add more footnotes</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_table_styling</span>(</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> label,</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Gender&quot;</span>),</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 1.&quot;</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modify_table_styling</span>(</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> label,</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Age&quot;</span>),</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 2.&quot;</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">tab_header</span>(</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;**Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset.**&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Don&#39;t want footnotes to be in multi lines</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_options</span>(<span class="at">footnotes.multiline =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove missing data in the Diabetes variable for simplicity</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Diabetes)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Format the Diabetes variable</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diabetes =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      Diabetes <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;With Diabetes&quot;</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      Diabetes <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;Without Diabetes&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diabetes =</span> <span class="fu">factor</span>(Diabetes, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;With Diabetes&quot;</span>, <span class="st">&quot;Without Diabetes&quot;</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add total number</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select relevant variables</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    total, Gender, Age, AgeDecade, Race1, BMI_WHO, Education, </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    MaritalStatus, HHIncome, Work, Diabetes</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a summary table by Diabetes group</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> Diabetes,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">&quot;continuous2&quot;</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> <span class="fu">list</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Include additional summary statistics for continuous variables</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">&quot;{mean}, ({sd})&quot;</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;{median}, ({p25}, {p75})&quot;</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;{min}, {max}&quot;</span>),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">&quot;{n} ({p}%)&quot;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">total =</span> <span class="st">&quot;Total (column denominator)&quot;</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">AgeDecade =</span> <span class="st">&quot;Age group&quot;</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">Race1 =</span> <span class="st">&quot;Ethnicity&quot;</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">BMI_WHO =</span> <span class="st">&quot;BMI group&quot;</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">HHIncome =</span> <span class="st">&quot;Household income&quot;</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">Work =</span> <span class="st">&quot;Employment status&quot;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="st">&quot;no&quot;</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove decimal places for all numbers and percentages</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="fu">list</span>(</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add total column</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_overall</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Move the total column to the far end of the table</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_body</span>(</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> .x <span class="sc">%&gt;%</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_0, <span class="at">.after =</span> stat_2) <span class="sc">%&gt;%</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Change label name</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Median, (Q1, Q3)&quot;</span>, <span class="st">&quot;Median, (IQR)&quot;</span>, label)</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Min, Max&quot;</span>, <span class="st">&quot;Range&quot;</span>, label)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Modify the header</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">update =</span> <span class="fu">list</span>(</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_stat_cols</span>(<span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_0 =</span> <span class="st">&quot;**Total**&quot;</span>,</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_1 =</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_2 =</span> <span class="st">&quot;**{level}**&quot;</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test for differences between groups</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Bold labels for readability</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Modify footnotes</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_footnote</span>(</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">all_stat_cols</span>()) <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add more footnotes to specific rows</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_styling</span>(</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> label,</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Gender&quot;</span>),</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 1.&quot;</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_styling</span>(</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> label,</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>    <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Age&quot;</span>),</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 2.&quot;</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to gt table</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add table header with title</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_header</span>(</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;**Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset**&quot;</span>)</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Prevent footnotes from being split across multiple lines</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">footnotes.multiline =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="vedsliccxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vedsliccxb table {
+<div id="dejkoglkcv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dejkoglkcv table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#vedsliccxb thead, #vedsliccxb tbody, #vedsliccxb tfoot, #vedsliccxb tr, #vedsliccxb td, #vedsliccxb th {
+#dejkoglkcv thead, #dejkoglkcv tbody, #dejkoglkcv tfoot, #dejkoglkcv tr, #dejkoglkcv td, #dejkoglkcv th {
 border-style: none;
 }
-#vedsliccxb p {
+#dejkoglkcv p {
 margin: 0;
 padding: 0;
 }
-#vedsliccxb .gt_table {
+#dejkoglkcv .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -5924,11 +5962,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#vedsliccxb .gt_caption {
+#dejkoglkcv .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#vedsliccxb .gt_title {
+#dejkoglkcv .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -5939,7 +5977,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#vedsliccxb .gt_subtitle {
+#dejkoglkcv .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -5950,7 +5988,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#vedsliccxb .gt_heading {
+#dejkoglkcv .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -5961,12 +5999,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vedsliccxb .gt_bottom_border {
+#dejkoglkcv .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vedsliccxb .gt_col_headings {
+#dejkoglkcv .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5980,7 +6018,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vedsliccxb .gt_col_heading {
+#dejkoglkcv .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5999,7 +6037,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#vedsliccxb .gt_column_spanner_outer {
+#dejkoglkcv .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6010,13 +6048,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#vedsliccxb .gt_column_spanner_outer:first-child {
+#dejkoglkcv .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#vedsliccxb .gt_column_spanner_outer:last-child {
+#dejkoglkcv .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#vedsliccxb .gt_column_spanner {
+#dejkoglkcv .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -6027,10 +6065,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#vedsliccxb .gt_spanner_row {
+#dejkoglkcv .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#vedsliccxb .gt_group_heading {
+#dejkoglkcv .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6055,7 +6093,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#vedsliccxb .gt_empty_group_heading {
+#dejkoglkcv .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -6069,13 +6107,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#vedsliccxb .gt_from_md > :first-child {
+#dejkoglkcv .gt_from_md > :first-child {
 margin-top: 0;
 }
-#vedsliccxb .gt_from_md > :last-child {
+#dejkoglkcv .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#vedsliccxb .gt_row {
+#dejkoglkcv .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6093,7 +6131,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#vedsliccxb .gt_stub {
+#dejkoglkcv .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6105,7 +6143,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vedsliccxb .gt_stub_row_group {
+#dejkoglkcv .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6118,13 +6156,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#vedsliccxb .gt_row_group_first td {
+#dejkoglkcv .gt_row_group_first td {
 border-top-width: 2px;
 }
-#vedsliccxb .gt_row_group_first th {
+#dejkoglkcv .gt_row_group_first th {
 border-top-width: 2px;
 }
-#vedsliccxb .gt_summary_row {
+#dejkoglkcv .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6133,14 +6171,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vedsliccxb .gt_first_summary_row {
+#dejkoglkcv .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#vedsliccxb .gt_first_summary_row.thick {
+#dejkoglkcv .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#vedsliccxb .gt_last_summary_row {
+#dejkoglkcv .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6149,7 +6187,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vedsliccxb .gt_grand_summary_row {
+#dejkoglkcv .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6158,7 +6196,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vedsliccxb .gt_first_grand_summary_row {
+#dejkoglkcv .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6167,7 +6205,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#vedsliccxb .gt_last_grand_summary_row_top {
+#dejkoglkcv .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6176,10 +6214,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#vedsliccxb .gt_striped {
+#dejkoglkcv .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#vedsliccxb .gt_table_body {
+#dejkoglkcv .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6187,7 +6225,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vedsliccxb .gt_footnotes {
+#dejkoglkcv .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6200,7 +6238,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vedsliccxb .gt_footnote {
+#dejkoglkcv .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -6208,7 +6246,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vedsliccxb .gt_sourcenotes {
+#dejkoglkcv .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6221,64 +6259,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vedsliccxb .gt_sourcenote {
+#dejkoglkcv .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vedsliccxb .gt_left {
+#dejkoglkcv .gt_left {
 text-align: left;
 }
-#vedsliccxb .gt_center {
+#dejkoglkcv .gt_center {
 text-align: center;
 }
-#vedsliccxb .gt_right {
+#dejkoglkcv .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#vedsliccxb .gt_font_normal {
+#dejkoglkcv .gt_font_normal {
 font-weight: normal;
 }
-#vedsliccxb .gt_font_bold {
+#dejkoglkcv .gt_font_bold {
 font-weight: bold;
 }
-#vedsliccxb .gt_font_italic {
+#dejkoglkcv .gt_font_italic {
 font-style: italic;
 }
-#vedsliccxb .gt_super {
+#dejkoglkcv .gt_super {
 font-size: 65%;
 }
-#vedsliccxb .gt_footnote_marks {
+#dejkoglkcv .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#vedsliccxb .gt_asterisk {
+#dejkoglkcv .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#vedsliccxb .gt_indent_1 {
+#dejkoglkcv .gt_indent_1 {
 text-indent: 5px;
 }
-#vedsliccxb .gt_indent_2 {
+#dejkoglkcv .gt_indent_2 {
 text-indent: 10px;
 }
-#vedsliccxb .gt_indent_3 {
+#dejkoglkcv .gt_indent_3 {
 text-indent: 15px;
 }
-#vedsliccxb .gt_indent_4 {
+#dejkoglkcv .gt_indent_4 {
 text-indent: 20px;
 }
-#vedsliccxb .gt_indent_5 {
+#dejkoglkcv .gt_indent_5 {
 text-indent: 25px;
 }
-#vedsliccxb .katex-display {
+#dejkoglkcv .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#vedsliccxb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dejkoglkcv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -6293,12 +6331,12 @@ height: 0px !important;
 </colgroup>
 <thead>
 <tr class="header gt_heading">
-<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset.</strong></th>
+<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset</strong></th>
 </tr>
 <tr class="odd gt_col_headings">
 <th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
 <th id="stat_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>With Diabetes</strong></th>
-<th id="stat_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Without Diabtes</strong></th>
+<th id="stat_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Without Diabetes</strong></th>
 <th id="stat_0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Total</strong></th>
 <th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
 </tr>
@@ -6790,6 +6828,1182 @@ height: 0px !important;
 <tr class="even gt_footnotes">
 <td colspan="5" class="gt_footnote"><div style="padding-bottom:2px;">
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Pearson’s Chi-squared test; Wilcoxon rank sum test <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> This is a sample footnote 1. <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>3</sup></span> This is a sample footnote 2.
+</div></td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="customize-the-tables-appearance-ii" class="level3">
+<h3 class="anchored" data-anchor-id="customize-the-tables-appearance-ii"><strong>Customize the table’s appearance II</strong></h3>
+<p><strong>Separate the Number and Percentage Columns</strong>: Split the n (count) and p (percentage) values into two separate columns in the table.</p>
+<p><strong>Right-align the Number and Percentage Columns</strong>: Apply cell_text(align = “right”) to these columns.</p>
+<p><strong>Add Colors</strong>: Apply cell_fill() for background colors and/or cell_text() for text colors to enhance readability.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;{n}&quot;</span>, <span class="st">&quot;({p}%)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>data <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Remove missing data in the Diabetes variable for simplicity</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Diabetes)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Format the Diabetes variable</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">Diabetes =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>          Diabetes <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;With Diabetes&quot;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>          Diabetes <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;Without Diabetes&quot;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Diabetes =</span> <span class="fu">factor</span>(Diabetes, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;With Diabetes&quot;</span>, <span class="st">&quot;Without Diabetes&quot;</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add total number</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">total =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Select relevant variables</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        total, Gender, Age, AgeDecade, Race1, BMI_WHO, Education, </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        MaritalStatus, HHIncome, Work, Diabetes</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Create a summary table by Diabetes group</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tbl_summary</span>(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> Diabetes,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">&quot;continuous2&quot;</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Include additional summary statistics for continuous variables</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">&quot;{mean} ({sd})&quot;</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;{median} ({p25}, {p75})&quot;</span>,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;{min}, {max}&quot;</span>),</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> .x</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>          <span class="at">total =</span> <span class="st">&quot;Total (column denominator)&quot;</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>          <span class="at">AgeDecade =</span> <span class="st">&quot;Age group&quot;</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>          <span class="at">Race1 =</span> <span class="st">&quot;Ethnicity&quot;</span>,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>          <span class="at">BMI_WHO =</span> <span class="st">&quot;BMI group&quot;</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>          <span class="at">HHIncome =</span> <span class="st">&quot;Household income&quot;</span>,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>          <span class="at">Work =</span> <span class="st">&quot;Employment status&quot;</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        <span class="at">missing =</span> <span class="st">&quot;no&quot;</span>,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove decimal places for all numbers and percentages</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">digits =</span> <span class="fu">list</span>(</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add total column</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_overall</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Bold labels for readability</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">bold_labels</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_merge</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">everything</span>()<span class="sc">~</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-arrange the number and percentage columns</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_body</span>(</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> .x <span class="sc">%&gt;%</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_1_2, <span class="at">.after=</span>stat_1_1) <span class="sc">%&gt;%</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_2_2, <span class="at">.after=</span>stat_2_1) <span class="sc">%&gt;%</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_0_1, <span class="at">.after=</span>stat_2_2) <span class="sc">%&gt;%</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">relocate</span>(stat_0_2, <span class="at">.after=</span>stat_0_1)</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>    <span class="sc">%&gt;%</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Change label name</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Median, (Q1, Q3)&quot;</span>, <span class="st">&quot;Median, (IQR)&quot;</span>, label)</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Min, Max&quot;</span>, <span class="st">&quot;Range&quot;</span>, label)</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Remove the summary statistics for the continuous variable in the % column</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_0_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Mean (SD)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_0_2 ),</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_0_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Median (Q1, Q3)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_0_2 ),</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_0_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Range&quot;</span>, <span class="st">&quot;&quot;</span>,stat_0_2 ),</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_1_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Mean (SD)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_1_2 ),</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_1_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Median (Q1, Q3)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_1_2 ),</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_1_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Range&quot;</span>, <span class="st">&quot;&quot;</span>,stat_1_2 ),</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_2_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Mean (SD)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_2_2 ),</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_2_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Median (Q1, Q3)&quot;</span>, <span class="st">&quot;&quot;</span>,stat_2_2 ),</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat_2_2 =</span> <span class="fu">ifelse</span>(label <span class="sc">==</span> <span class="st">&quot;Range&quot;</span>, <span class="st">&quot;&quot;</span>,stat_2_2 ),</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Modify the header</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">update =</span> <span class="fu">list</span>(</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all_stat_cols</span>(<span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_0_1 =</span> <span class="st">&quot;**Total**&quot;</span>,</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_0_2 =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_1_1 =</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_1_2 =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_2_1 =</span> <span class="st">&quot;**{level}**&quot;</span>,</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat_2_2 =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Modify footnotes</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_footnote</span>(</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">all_stat_cols</span>()) <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add more footnotes to specific rows</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_styling</span>(</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> label,</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Gender&quot;</span>),</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 1.&quot;</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_table_styling</span>(</span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> label,</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">row =</span> label <span class="sc">==</span> <span class="fu">list</span>(<span class="st">&quot;Age&quot;</span>),</span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;This is a sample footnote 2.&quot;</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to gt table</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add table header with title</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_header</span>(</span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;**Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset**&quot;</span>)</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Prevent footnotes from being split across multiple lines</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">footnotes.multiline =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Right-align all columns except the label column</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">align =</span> <span class="st">&quot;center&quot;</span>),</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">everything</span>()</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">align =</span> <span class="st">&quot;right&quot;</span>),</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="sc">!</span>label</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding some colors to the tables</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>tab <span class="sc">%&gt;%</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">&quot;#E8E4E6&quot;</span>),  <span class="co"># Apply the background color</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="fu">nrow</span>(tab<span class="sc">$</span><span class="st">`</span><span class="at">_data</span><span class="st">`</span>), <span class="at">by =</span> <span class="dv">2</span>)  <span class="co"># Select every second row (alternating)</span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">&quot;#DAE9F7&quot;</span>),</span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="jfazqjcmft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jfazqjcmft table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#jfazqjcmft thead, #jfazqjcmft tbody, #jfazqjcmft tfoot, #jfazqjcmft tr, #jfazqjcmft td, #jfazqjcmft th {
+border-style: none;
+}
+#jfazqjcmft p {
+margin: 0;
+padding: 0;
+}
+#jfazqjcmft .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#jfazqjcmft .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#jfazqjcmft .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#jfazqjcmft .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#jfazqjcmft .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jfazqjcmft .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jfazqjcmft .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jfazqjcmft .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#jfazqjcmft .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#jfazqjcmft .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#jfazqjcmft .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#jfazqjcmft .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#jfazqjcmft .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#jfazqjcmft .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#jfazqjcmft .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#jfazqjcmft .gt_from_md > :first-child {
+margin-top: 0;
+}
+#jfazqjcmft .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#jfazqjcmft .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#jfazqjcmft .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jfazqjcmft .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#jfazqjcmft .gt_row_group_first td {
+border-top-width: 2px;
+}
+#jfazqjcmft .gt_row_group_first th {
+border-top-width: 2px;
+}
+#jfazqjcmft .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jfazqjcmft .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#jfazqjcmft .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#jfazqjcmft .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jfazqjcmft .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jfazqjcmft .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#jfazqjcmft .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#jfazqjcmft .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#jfazqjcmft .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jfazqjcmft .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jfazqjcmft .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jfazqjcmft .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jfazqjcmft .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jfazqjcmft .gt_left {
+text-align: left;
+}
+#jfazqjcmft .gt_center {
+text-align: center;
+}
+#jfazqjcmft .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#jfazqjcmft .gt_font_normal {
+font-weight: normal;
+}
+#jfazqjcmft .gt_font_bold {
+font-weight: bold;
+}
+#jfazqjcmft .gt_font_italic {
+font-style: italic;
+}
+#jfazqjcmft .gt_super {
+font-size: 65%;
+}
+#jfazqjcmft .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#jfazqjcmft .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#jfazqjcmft .gt_indent_1 {
+text-indent: 5px;
+}
+#jfazqjcmft .gt_indent_2 {
+text-indent: 10px;
+}
+#jfazqjcmft .gt_indent_3 {
+text-indent: 15px;
+}
+#jfazqjcmft .gt_indent_4 {
+text-indent: 20px;
+}
+#jfazqjcmft .gt_indent_5 {
+text-indent: 25px;
+}
+#jfazqjcmft .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#jfazqjcmft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header gt_heading">
+<th colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset</strong></th>
+</tr>
+<tr class="odd gt_col_headings">
+<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"></th>
+<th id="stat_1_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"><strong>With Diabetes</strong></th>
+<th id="stat_1_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"></th>
+<th id="stat_2_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"><strong>Without Diabetes</strong></th>
+<th id="stat_2_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"></th>
+<th id="stat_0_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"><strong>Total</strong></th>
+<th id="stat_0_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; background-color: #DAE9F7;" scope="col"></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Total (column denominator)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">760</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(100%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">9,098</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(100%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">9,858</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(100%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold; background-color: #E8E4E6">Gender<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    female</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">357</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(47%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">4,592</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(50%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">4,949</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(50%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    male</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">403</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(53%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">4,506</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(50%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">4,909</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(50%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Age<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Mean (SD)</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">59 (15)</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"></td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">35 (22)</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"></td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">37 (22)</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Median (Q1, Q3)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">61 (51, 70)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"></td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">34 (17, 52)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"></td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">37 (18, 54)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Range</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">11, 80</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"></td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1, 80</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"></td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">1, 80</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Age group</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">     0-9</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">0</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(0%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1,254</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(14%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">1,254</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(13%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">     10-19</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">17</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(2%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,354</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(15%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,371</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(14%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">     20-29</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">12</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(2%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1,344</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(15%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">1,356</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(14%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">     30-39</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">43</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(6%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,295</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(15%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,338</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(14%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">     40-49</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">96</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(14%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1,302</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(15%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">1,398</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(15%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">     50-59</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">178</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(26%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,126</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(13%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,304</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(14%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">     60-69</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">204</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(30%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">713</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(8%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">917</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(10%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">     70+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">140</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(20%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">447</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(5%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">587</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(6%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold; background-color: #E8E4E6">Ethnicity</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Black</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">131</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(17%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,053</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(12%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,184</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(12%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Hispanic</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">47</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">555</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">602</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Mexican</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">66</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(9%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">925</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(10%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">991</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(10%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    White</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">450</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(59%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">5,840</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(64%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">6,290</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(64%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Other</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">66</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(9%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">725</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(8%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">791</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(8%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold; background-color: #E8E4E6">BMI group</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    12.0_18.5</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">3</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(0%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,274</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(14%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,277</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(13%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    18.5_to_24.9</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">111</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(15%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">2,797</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(32%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">2,908</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(30%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    25.0_to_29.9</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">203</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(27%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">2,461</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(28%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">2,664</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(28%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    30.0_plus</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">428</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(57%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">2,321</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(26%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">2,749</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(29%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Education</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    8th Grade</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">100</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(13%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">351</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(5%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">451</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    9 - 11th Grade</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">105</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(14%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">781</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(12%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">886</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(12%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    High School</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">165</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(22%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1,352</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(21%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">1,517</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(21%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Some College</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">228</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(31%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">2,039</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(31%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">2,267</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(31%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    College Grad</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">144</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(19%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">1,954</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(30%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">2,098</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(29%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">MaritalStatus</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Divorced</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">100</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(13%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">605</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(9%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">705</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(10%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    LivePartner</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">29</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(4%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">531</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(8%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">560</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(8%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Married</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">426</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(57%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">3,519</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(54%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">3,945</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(55%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    NeverMarried</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">67</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(9%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">1,313</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(20%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,380</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(19%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Separated</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">24</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(3%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">159</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(2%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">183</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(3%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    Widowed</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">95</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(13%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">361</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(6%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">456</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(6%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold; background-color: #E8E4E6">Household income</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">     0-4999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">13</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(2%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">169</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(2%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">182</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(2%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">     5000-9999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">27</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(4%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">223</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(3%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">250</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(3%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    10000-14999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">65</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(9%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">472</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(6%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">537</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(6%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    15000-19999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">54</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(8%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">461</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">515</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    20000-24999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">59</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(8%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">546</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(7%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">605</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(7%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    25000-34999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">80</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(11%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">865</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(10%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">945</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(10%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    35000-44999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">86</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(12%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">765</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(9%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">851</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(9%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    45000-54999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">50</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(7%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">726</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(9%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">776</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(9%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    55000-64999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">44</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(6%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">571</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(7%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">615</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(7%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    65000-74999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">45</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">476</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">521</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(6%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    75000-99999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">67</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(10%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">999</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(12%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">1,066</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(12%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    more 99999</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">106</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(15%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">2,094</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(25%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">2,200</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(24%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Employment status</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1"><br>
+</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Looking</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">23</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(3%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">288</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(4%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">311</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(4%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    NotWorking</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_1">427</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_1_2">(57%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_1">2,418</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_2_2">(34%)</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_1">2,845</td>
+<td class="gt_row gt_center" style="text-align: right;" headers="stat_0_2">(37%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="background-color: #E8E4E6">    Working</td>
+<td class="gt_row gt_center" headers="stat_1_1" style="text-align: right; background-color: #E8E4E6;">294</td>
+<td class="gt_row gt_center" headers="stat_1_2" style="text-align: right; background-color: #E8E4E6;">(40%)</td>
+<td class="gt_row gt_center" headers="stat_2_1" style="text-align: right; background-color: #E8E4E6;">4,319</td>
+<td class="gt_row gt_center" headers="stat_2_2" style="text-align: right; background-color: #E8E4E6;">(61%)</td>
+<td class="gt_row gt_center" headers="stat_0_1" style="text-align: right; background-color: #E8E4E6;">4,613</td>
+<td class="gt_row gt_center" headers="stat_0_2" style="text-align: right; background-color: #E8E4E6;">(59%)</td>
+</tr>
+</tbody><tfoot>
+<tr class="even gt_footnotes">
+<td colspan="7" class="gt_footnote"><div style="padding-bottom:2px;">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> This is a sample footnote 1. <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> This is a sample footnote 2.
 </div></td>
 </tr>
 </tfoot>
