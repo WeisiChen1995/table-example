@@ -44,17 +44,121 @@ data <- NHANES::NHANES
 
 ```{r}
 data %>%
-    # Remove the missing data in the diabetes variable for simplicity 
+    # Remove missing data in the Diabetes variable for simplicity
     filter(!is.na(Diabetes)) %>%
-    select(Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus,
-           HHIncome, Work, Diabetes) %>%
-    tbl_summary(by = Diabetes, 
-              statistic = list(all_continuous() ~ "{mean} ({sd})", 
-                               all_categorical() ~ "{n} ({p}%)")) %>%
+    # Select relevant variables
+    select(Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus, HHIncome, Work, Diabetes) %>%
+    # Create a summary table by Diabetes group
+    tbl_summary(
+        by = Diabetes, 
+        statistic = list(
+            all_continuous() ~ "{mean} ({sd})", 
+            all_categorical() ~ "{n} ({p}%)"
+        ),
+        label = list(
+          AgeDecade = "Age group",
+          Race1 = "Ethnicity",
+          BMI_WHO = "BMI group",
+          HHIncome = "Household income",
+          Work = "Employment status"
+        )
+    ) %>%
     add_overall() %>%
-    add_p() %>% # test for a difference between groups
+    add_p() %>%  # Test for differences between groups
     bold_labels() %>%
-    modify_header(label = "**Characteristic**") %>% # Update the column header
+    modify_header(label = "**Characteristic**") %>%  # Update column header
     as_gt() %>%
-    gt::tab_header("Table: sociodemographic characteristics of patients with and without diabetes.")
+    gt::tab_header(
+        "Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset."
+    )
 ```
+
+### **Customize the table's appearance**
+
+- **Move the total column** to the far-right end of the table for improved readability.
+- **Remove the 'N = xxxx'** from the header to streamline the table's appearance.
+- **Add a "Total (denominator)" row** at the top of the table for better context and clarity.
+- **Avoid decimal places** for both numbers and percentages for a cleaner presentation.
+- **Include additional summary statistics** for continuous variables, such as mean (SD), median (IQR), and range, to provide a more comprehensive summary.
+- **Customize the footnotes**
+
+```{r}
+data %>%
+    # Remove missing data in the Diabetes variable for simplicity
+    filter(!is.na(Diabetes)) %>%
+    # Format the Diabates variable
+    mutate(Diabetes = case_when(Diabetes == "Yes" ~ "With Diabetes",
+                                Diabetes == "No" ~ "Without Diabtes"),
+           Diabetes = factor(Diabetes, levels=c("With Diabetes", "Without Diabtes"))) %>%
+    # Add total number 
+    mutate(total = TRUE) %>%
+    # Select relevant variables
+    select(total, Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus, HHIncome, Work, Diabetes) %>%
+    # Create a summary table by Diabetes group
+    tbl_summary(
+        by = Diabetes, 
+        type = all_continuous() ~ "continuous2",
+        statistic = list(
+            # Include additional summary statistics for continuous variables
+            all_continuous() ~ c("{mean}, ({sd})",
+                                 "{median}, ({p25}, {p75})",
+                                 "{min}, {max}"), 
+            all_categorical() ~ "{n} ({p}%)"
+        ),
+        label = list(
+          total = "Total (column denominator)",
+          AgeDecade = "Age group",
+          Race1 = "Ethnicity",
+          BMI_WHO = "BMI group",
+          HHIncome = "Household income",
+          Work = "Employment status"
+        ),
+        missing = "no",
+        # Remove decimal placeds for all number and percentage
+        digits = list(all_continuous() ~ c(0,0),
+                      all_categorical() ~ c(0,0))
+    ) %>%
+    # Add total column
+    add_overall() %>%
+    # Move the total column to the far end of the table 
+    modify_table_body(~.x %>%
+                        dplyr::relocate(stat_0, .after=stat_2) %>%
+                        # change label name 
+                        dplyr::mutate(label = ifelse(label=="Median, (Q1, Q3)", "Median, (IQR)", label)) %>%
+                        dplyr::mutate(label = ifelse(label=="Min, Max", "Range",label))
+    ) %>%
+    # modify the header
+    modify_header(
+      update = list(all_stat_cols(TRUE) ~ "**{level}**",
+                   label = "",
+                   stat_0 = "**Total**",
+                   stat_1 = "**{level}**",
+                   stat_2 = "**{level}**")
+    )%>%
+    # Test for differences between groups
+    add_p() %>%  
+    bold_labels() %>%
+    # Modify footnotes
+    modify_footnote(
+      c(all_stat_cols()) ~ NA
+    ) %>%
+    # Add more footnotes
+    modify_table_styling(
+      columns = label,
+      row = label == list("Gender"),
+      footnote = "This is a sample footnote 1."
+    ) %>%
+    modify_table_styling(
+      columns = label,
+      row = label == list("Age"),
+      footnote = "This is a sample footnote 2."
+    ) %>%
+    as_gt() %>%
+    gt::tab_header(
+    title = md("**Table 1: Sociodemographic Characteristics of Patients With and Without Diabetes in the Demo Dataset.**")) %>%
+    # Don't want footnotes to be in multi lines
+    tab_options(footnotes.multiline = FALSE)
+```
+
+
+
