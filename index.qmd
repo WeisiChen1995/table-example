@@ -1,5 +1,5 @@
 ---
-title: "Exploring different R packages to make professional looking academic descriptive tables"
+title: "Exploring the R gtsummary Package to Create Professional-Quality Descriptive Tables for Academic Publications"
 author: "Weisi Chen"
 date: "`r Sys.Date()`"  # Inserts today's date
 format:
@@ -19,43 +19,42 @@ format:
     reference-docx: "custom-reference-doc.docx"  
 execute:
   warning: false
-  echo: false
   message: false
   eval: true
 ---
 
 
-```{r Read libarry}
+### **Install and read in R packages needed**
+
+```{r Read libarry, include=TRUE}
 library(NHANES)
 library(gtsummary)
 library(gt)
 library(dplyr)
 ```
 
+### **Read in the demo data**
 
 ```{r Read in data}
 data <- NHANES::NHANES
 ```
 
 
-#### Explore the Data
+### **Example basic table**
 
 ```{r}
-head(data )
-```
-
-#### Create a table summarizing the sociodemographic characteristics of patients with and without diabetes
-
-##### Default output generated using the 'gtsummary' package.
-
-```{r, echo=FALSE}
 data %>%
+    # Remove the missing data in the diabetes variable for simplicity 
+    filter(!is.na(Diabetes)) %>%
     select(Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus,
            HHIncome, Work, Diabetes) %>%
     tbl_summary(by = Diabetes, 
               statistic = list(all_continuous() ~ "{mean} ({sd})", 
                                all_categorical() ~ "{n} ({p}%)")) %>%
     add_overall() %>%
+    add_p() %>% # test for a difference between groups
+    bold_labels() %>%
+    modify_header(label = "**Characteristic**") %>% # Update the column header
     as_gt() %>%
-    gt::tab_header("Table: sociodemographic characteristics of patients with and without diabetes")
+    gt::tab_header("Table: sociodemographic characteristics of patients with and without diabetes.")
 ```

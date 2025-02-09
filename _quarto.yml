@@ -2,12 +2,11 @@ project:
   type: website
 
 website:
-  title: "table-example"
+  title: "Table Examples & Code"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
 
 format:
   html:
