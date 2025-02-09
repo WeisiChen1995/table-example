@@ -24,7 +24,21 @@ execute:
 ---
 
 
+
+
+
+
+
+
+
 ### **Install and read in R packages needed**
+
+
+
+
+
+
+
 
 ```{r Read libarry, include=TRUE}
 library(NHANES)
@@ -34,14 +48,42 @@ library(dplyr)
 library(purrr)
 ```
 
+
+
+
+
+
+
+
 ### **Read in the demo data**
+
+
+
+
+
+
+
 
 ```{r Read in data}
 data <- NHANES::NHANES
 ```
 
 
+
+
+
+
+
+
+
 ### **Example basic table**
+
+
+
+
+
+
+
 
 ```{r, echo=FALSE}
 data %>%
@@ -74,6 +116,13 @@ data %>%
     )
 ```
 
+
+
+
+
+
+
+
 ### **Customize the table's appearance**
 
 - **Move the total column** to the far-right end of the table for improved readability.
@@ -82,6 +131,13 @@ data %>%
 - **Avoid decimal places** for both numbers and percentages for a cleaner presentation.
 - **Include additional summary statistics** for continuous variables, such as mean (SD), median (IQR), and range, to provide a more comprehensive summary.
 - **Customize the footnotes**
+
+
+
+
+
+
+
 
 ```{r, echo=FALSE}
 data %>%
@@ -198,11 +254,25 @@ data %>%
 ```
 
 
+
+
+
+
+
+
+
 ### **Customize the table's appearance II**
 
 - **Separate the Number and Percentage Columns**: Split the n (count) and p (percentage) values into two separate columns in the table.
 - **Right-align the Number and Percentage Columns**: Apply cell_text(align = "right") to these columns.
 - **Add Colors**: Apply cell_fill() for background colors and/or cell_text() for text colors to enhance readability.
+
+
+
+
+
+
+
 ```{r, echo=FALSE}
 tab <- c("{n}", "({p}%)") %>%
   map(
@@ -364,8 +434,22 @@ tab %>%
 ```
 
 
+
+
+
+
+
+
+
 ## **Code Available**
 ### Code to produce the example basic table
+
+
+
+
+
+
+
 ```{r echo=TRUE, results='hide'}
 data %>%
     # Remove missing data in the Diabetes variable for simplicity
@@ -397,7 +481,21 @@ data %>%
 ```
 
 
+
+
+
+
+
+
+
 ### Code to produce the customized table I
+
+
+
+
+
+
+
 ```{r echo=TRUE, results='hide'}
 data %>%
   # Remove missing data in the Diabetes variable for simplicity
@@ -515,7 +613,21 @@ data %>%
 
 
 
+
+
+
+
+
+
+
 ### Code to produce the customized table II
+
+
+
+
+
+
+
 ```{r echo=TRUE, results='hide'}
 tab <- c("{n}", "({p}%)") %>%
   map(
