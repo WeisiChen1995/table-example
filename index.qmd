@@ -1,0 +1,61 @@
+---
+title: "Exploring different R packages to make professional looking academic descriptive tables"
+author: "Weisi Chen"
+date: "`r Sys.Date()`"  # Inserts today's date
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 5
+    embed-resources: true
+    theme: cosmo
+  pdf:
+    toc: true
+    toc-depth: 5
+  docx:
+    toc: true
+    toc-depth: 5
+    toc-title: Contents
+    reference-docx: "custom-reference-doc.docx"  
+execute:
+  warning: false
+  echo: false
+  message: false
+  eval: true
+---
+
+
+```{r Read libarry}
+library(NHANES)
+library(gtsummary)
+library(gt)
+library(dplyr)
+```
+
+
+```{r Read in data}
+data <- NHANES::NHANES
+```
+
+
+#### Explore the Data
+
+```{r}
+head(data )
+```
+
+#### Create a table summarizing the sociodemographic characteristics of patients with and without diabetes
+
+##### Default output generated using the 'gtsummary' package.
+
+```{r, echo=FALSE}
+data %>%
+    select(Gender, Age, AgeDecade, Race1, BMI_WHO, Education, MaritalStatus,
+           HHIncome, Work, Diabetes) %>%
+    tbl_summary(by = Diabetes, 
+              statistic = list(all_continuous() ~ "{mean} ({sd})", 
+                               all_categorical() ~ "{n} ({p}%)")) %>%
+    add_overall() %>%
+    as_gt() %>%
+    gt::tab_header("Table: sociodemographic characteristics of patients with and without diabetes")
+```
