@@ -202,6 +202,7 @@ data %>%
 
 - **Separate the Number and Percentage Columns**: Split the n (count) and p (percentage) values into two separate columns in the table.
 - **Right-align the Number and Percentage Columns**: Apply cell_text(align = "right") to these columns.
+- **Label the Columns as n and col%**
 - **Add Colors**: Apply cell_fill() for background colors and/or cell_text() for text colors to enhance readability.
 ```{r, echo=FALSE}
 tab <- c("{n}", "({p}%)") %>%
@@ -279,6 +280,7 @@ tab <- c("{n}", "({p}%)") %>%
       dplyr::mutate(
         label = ifelse(label == "Min, Max", "Range", label)
       ) %>%
+      
       # Remove the summary statistics for the continuous variable in the % column
       dplyr::mutate(
         stat_0_2 = ifelse(label == "Mean (SD)", "",stat_0_2 ),
@@ -298,13 +300,20 @@ tab <- c("{n}", "({p}%)") %>%
     update = list(
       all_stat_cols(TRUE) ~ "**{level}**",
       label = "",
-      stat_0_1 = "**Total**",
-      stat_0_2 = "",
-      stat_1_1 = "**{level}**",
-      stat_1_2 = "",
-      stat_2_1 = "**{level}**",
-      stat_2_2 = ""
+      stat_0_1 = "**n**",
+      stat_0_2 = "**col%**",
+      stat_1_1 = "**n**",
+      stat_1_2 = "**col%**",
+      stat_2_1 = "**n**",
+      stat_2_2 = "**col%**"
     )
+  ) %>%
+  
+  # Modify spanning header
+  modify_spanning_header(
+    stat_1_1:stat_1_2 ~ "**With Diabetes**",
+    stat_2_1:stat_2_2 ~ "**Without Diabetes**",  
+    stat_0_1:stat_0_2 ~ "**Total**", 
   ) %>%
   
   # Modify footnotes
@@ -335,19 +344,37 @@ tab <- c("{n}", "({p}%)") %>%
   # Prevent footnotes from being split across multiple lines
   tab_options(footnotes.multiline = FALSE) %>%
   
-  # Right-align all columns except the label column
-  tab_style(
-    style = cell_text(align = "center"),
-    locations = cells_column_labels(
-      columns = everything()
-    )
-  ) %>%
+  # Right-align the body cells (excluding the label column)
   tab_style(
     style = cell_text(align = "right"),
     locations = cells_body(
-      columns = !label
+      columns = !label 
     )
-  ) 
+  ) %>%
+  
+  # Center-align the "label" column header
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_column_labels(
+      columns = label
+    )
+  ) %>%
+  
+  # Right-align the number and percentage columns in the headers
+  tab_style(
+    style = cell_text(align = "right"),
+    locations = cells_column_labels(
+      columns = c(stat_0_1, stat_0_2, stat_1_1, stat_1_2, stat_2_1, stat_2_2)
+    )
+  ) %>%
+  
+  # Center-align the spanning column headers (e.g., "With Diabetes", "Without Diabetes", "Total")
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_column_labels(
+      columns = c(stat_1_1, stat_1_2, stat_2_1, stat_2_2, stat_0_1, stat_0_2)
+    )
+  )
 
 # Adding some colors to the tables
 tab %>%
@@ -360,6 +387,10 @@ tab %>%
   tab_style(
     style = cell_fill(color = "#DAE9F7"),
     locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#DAE9F7"),
+    locations = cells_column_spanners()
   )
 ```
 
@@ -592,6 +623,7 @@ tab <- c("{n}", "({p}%)") %>%
       dplyr::mutate(
         label = ifelse(label == "Min, Max", "Range", label)
       ) %>%
+      
       # Remove the summary statistics for the continuous variable in the % column
       dplyr::mutate(
         stat_0_2 = ifelse(label == "Mean (SD)", "",stat_0_2 ),
@@ -611,13 +643,20 @@ tab <- c("{n}", "({p}%)") %>%
     update = list(
       all_stat_cols(TRUE) ~ "**{level}**",
       label = "",
-      stat_0_1 = "**Total**",
-      stat_0_2 = "",
-      stat_1_1 = "**{level}**",
-      stat_1_2 = "",
-      stat_2_1 = "**{level}**",
-      stat_2_2 = ""
+      stat_0_1 = "**n**",
+      stat_0_2 = "**col%**",
+      stat_1_1 = "**n**",
+      stat_1_2 = "**col%**",
+      stat_2_1 = "**n**",
+      stat_2_2 = "**col%**"
     )
+  ) %>%
+  
+  # Modify spanning header
+  modify_spanning_header(
+    stat_1_1:stat_1_2 ~ "**With Diabetes**",
+    stat_2_1:stat_2_2 ~ "**Without Diabetes**",  
+    stat_0_1:stat_0_2 ~ "**Total**", 
   ) %>%
   
   # Modify footnotes
@@ -661,6 +700,7 @@ tab <- c("{n}", "({p}%)") %>%
       columns = !label
     )
   ) 
+  
 
 # Adding some colors to the tables
 tab %>%
@@ -673,5 +713,9 @@ tab %>%
   tab_style(
     style = cell_fill(color = "#DAE9F7"),
     locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#DAE9F7"),
+    locations = cells_column_spanners()
   )
 ```
